@@ -73,6 +73,7 @@ For Fedora/RHEL Linux, sudoers should look roughly like this (given your user be
   %vagrant ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD_CHECK, VAGRANT_NFSD_START, VAGRANT_NFSD_APPLY, VAGRANT_EXPORTS_REMOVE
 ```
 
+For Windows users, consider moving to a better OS ;)
 
 ### Misc Errors
 
