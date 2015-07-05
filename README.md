@@ -1,4 +1,6 @@
-# Required:
+## Golden Image creation
+
+#### Required:
 
 There is some required software needed to run the following:
 Brew install the following
@@ -13,7 +15,10 @@ $ brew install packer
  * [Parallels Virtualization SDK](http://www.parallels.com/download/pvsdk/)
 
 
-## Notice
+`Note: Fusion installer via Mac is more stable than using the Fusion download above, ask me how...`
+
+
+##### Notice
 
 After having __several major issues__ with installing VMWare Fusion on OSX I recommend using this
 as the _preferred_ installation method from here out.
@@ -34,7 +39,7 @@ as the _preferred_ installation method from here out.
 ```
 
 
-## Notice
+##### Notice
 
 In order to vagrant up the oracle-6.6 packer file you WILL be prompted for your users (laptop/desktop) password.
 If you don't want to type your password on every vagrant up, Vagrant uses thoughtfully crafted commands to make
@@ -73,12 +78,14 @@ For Fedora/RHEL Linux, sudoers should look roughly like this (given your user be
   %vagrant ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD_CHECK, VAGRANT_NFSD_START, VAGRANT_NFSD_APPLY, VAGRANT_EXPORTS_REMOVE
 ```
 
-For Windows users, consider moving to a better OS ;)
+For Windows users
 
-### Misc Errors
+ * This is not for you, consider building your own or moving to another OS
+
+#### Misc Errors
 
 .....
 
-### Todo:
+#### Todo:
 
  * CRONtab to read/wipe `output_directory` prior to packer build

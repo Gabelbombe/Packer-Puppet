@@ -1,7 +1,7 @@
 {
   "variables": {
     "puppet_version": "masterless",
-    "mirror": "https://content-web.rhn.redhat.com/rhn/isos/rhel-6.6/md5sum/ef031b0ae8458d6489eb277ba1dcb5de",
+    "mirror": "http://ftp.linux.ncsu.edu/pub/CentOS/7/isos/x86_64/",
     "aws_access_key": "",
     "aws_secret_key": ""
   },
@@ -69,9 +69,9 @@
       "guest_os_type": "rhel6-64",
       "tools_upload_flavor": "linux",
       "http_directory": "http",
-      "iso_url": "{{user `mirror`}}/rhel-server-6.6-x86_64-dvd.iso",
+      "iso_url": "{{user `mirror`}}/CentOS-7-x86_64-Minimal-1503-01.iso",
       "iso_checksum": "16044cb7264f4bc0150f5b6f3f66936ccf2d36e0a4152c00d9236fb7dcae5f32",
-      "iso_checksum_type": "sha256",
+      "iso_checksum_type": "md5",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
       "output_directory": "packer-rhel-6.6-x86_64-vmware",
       "ssh_wait_timeout": "10000s",
