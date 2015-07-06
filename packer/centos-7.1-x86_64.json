@@ -74,6 +74,7 @@
       "vm_name": "packer-centos-7.1-x86_64",
       "disk_size": 40960,
 
+      "headless": 0,
       "parallels_tools_flavor": "lin",
       "guest_os_type": "centos",
 
@@ -91,14 +92,9 @@
       "ssh_port": 22,
 
       "prlctl": [
-        [
-          "set",          "{{.Name}}",
-          "--memsize",    480
-        ],
-        [
-          "set",          "{{.Name}}",
-          "--cpus",       2
-        ]
+        [ "set", "{{.Name}}", "--size",      51200 ],
+        [ "set", "{{.Name}}", "--memsize",   480   ],
+        [ "set", "{{.Name}}", "--cpus",      2     ]
       ],
 
       "prlctl_version_file": ".prlctl_version",
