@@ -18,6 +18,12 @@ $ brew install packer
  * [Parallels Virtualization SDK](http://www.parallels.com/download/pvsdk/)
 
 
+#### VM Settings:
+
+ * `root` password is set to puppet
+ * `vagrant` account uses the [Vagrant insecure public keys](https://github.com/mitchellh/vagrant/tree/master/keys)
+
+
 ##### Notice
 
 After having __several major issues__ with installing VMWare Fusion on OSX I recommend using this
