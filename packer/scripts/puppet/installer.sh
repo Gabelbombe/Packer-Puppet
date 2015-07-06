@@ -72,7 +72,7 @@ cd /tmp ; tar -zxvf ${tarball_path} ; rm ${tarball_path} ; cd puppet-enterprise*
 
 ./puppet-enterprise-installer -a /tmp/answers
 
-cd /tmp ; rm -rf ${PE_TAR} ; rm answers
+cd /tmp ; rm -rf puppet-enterprise* answers
 
 #--
 
