@@ -68,7 +68,8 @@ PE_URL="https://pm.puppetlabs.com/cgi-bin/download.cgi?ver=${PEVER}&dist=${PE_DI
 tarball_path=$(mktemp)
 wget --output-document="${tarball_path}" "${PE_URL}"
 
-cd /tmp ; tar -zxvf ${tarball_path} ; rm ${tarball_path} ; cd ${PE_TAR}
+cd /tmp ; tar -zxvf ${tarball_path} ; rm ${tarball_path} ; cd puppet-enterprise*
+
 ./puppet-enterprise-installer -a /tmp/answers
 
 cd /tmp ; rm -rf ${PE_TAR} ; rm answers
