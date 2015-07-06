@@ -47,7 +47,7 @@ as the _preferred_ installation method from here out.
 
 ##### Notice
 
-In order to vagrant up the oracle-6.6 packer file you WILL be prompted for your users (laptop/desktop) password.
+In order to vagrant up the packer (ran through LDAP) file you WILL be prompted for your users domain password.
 If you don't want to type your password on every vagrant up, Vagrant uses thoughtfully crafted commands to make
 fine-grained sudoers modifications possible to avoid entering your password. Below, we have a couple example
 sudoers entries. Note that you may have to modify them slightly on certain hosts because the way Vagrant modifies
@@ -87,6 +87,7 @@ For Fedora/RHEL Linux, sudoers should look roughly like this (given your user be
 For Windows users
 
  * This is not for you, consider building your own or moving to another OS
+
 
 #### Misc Errors
 
