@@ -9,6 +9,7 @@ $ brew cask install virtualbox vagrant vagrant-manager
 $ brew tap homebrew/binary
 $ brew cask install vmware-fusion     --app-dir=/Applications
 $ brew cask install parallels-desktop --app-dir=/Applications
+$ brew cask install parallels-virtualization-sdk
 $ brew install packer
 ```
 
