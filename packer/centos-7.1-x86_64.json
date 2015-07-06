@@ -17,7 +17,7 @@
       "iso_checksum_type": "sha256",
 
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory": "output/packer-centos-7.1-x86_64-virtualbox",
+      "output_directory": "output/{{.Provider}}-centos-7.1-x86_64",
 
       "ssh_wait_timeout": "10000s",
       "ssh_password": "vagrant",
@@ -54,7 +54,7 @@
       "iso_checksum": "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type": "sha256",
 
-      "output_directory": "output/packer-centos-7.1-x86_64-vmware",
+      "output_directory": "output/{{.Provider}}-centos-7.1-x86_64",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
 
       "ssh_wait_timeout": "10000s",
@@ -87,7 +87,7 @@
       "iso_checksum_type": "sha256",
 
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory": "output/packer-centos-7.1-x86_64-parallels",
+      "output_directory": "output/{{.Provider}}-centos-7.1-x86_64",
 
       "ssh_wait_timeout": "10000s",
       "ssh_username": "vagrant",
@@ -132,6 +132,9 @@
         "scripts/centos/cleanup.sh",
         "scripts/common/minimize.sh"
       ]
+    }, {
+      "type": "puppet-masterless",
+      "manifest_file": "site.pp"
   }],
 
   "variables": {
@@ -150,6 +153,9 @@
     "metadata": "floppy/dummy_metadata.json",
     "template": "centos-7.1-x86_64",
     "version": "2.0.TIMESTAMP",
+
+    "required_modules": "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum",
+    "puppet_nfs": "{{env `PUPPET_NFS`}}",
 
     "headless": ""
   }
