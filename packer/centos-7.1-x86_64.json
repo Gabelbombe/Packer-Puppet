@@ -17,7 +17,7 @@
       "iso_checksum_type": "sha256",
 
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory": "output/{{.Provider}}-centos-7.1-x86_64",
+      "output_directory": "output/centos-7.1-vbox",
 
       "ssh_wait_timeout": "10000s",
       "ssh_password": "vagrant",
@@ -26,14 +26,8 @@
 
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
-        [
-          "modifyvm",       "{{.Name}}",
-          "--memory",       480
-        ],
-        [
-          "modifyvm",       "{{.Name}}",
-          "--cpus",         2
-        ]
+        [ "modifyvm", "{{.Name}}", "--memory",    480 ],
+        [ "modifyvm", "{{.Name}}", "--cpus",      2   ]
       ],
 
       "boot_wait": "10s",
@@ -54,7 +48,7 @@
       "iso_checksum": "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type": "sha256",
 
-      "output_directory": "output/{{.Provider}}-centos-7.1-x86_64",
+      "output_directory": "output/centos-7.1-vmware",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
 
       "ssh_wait_timeout": "10000s",
@@ -87,7 +81,7 @@
       "iso_checksum_type": "sha256",
 
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory": "output/{{.Provider}}-centos-7.1-x86_64",
+      "output_directory": "output/centos-7.1-parallels",
 
       "ssh_wait_timeout": "10000s",
       "ssh_username": "vagrant",
@@ -136,7 +130,7 @@
       "type": "shell",
       "execute_command": "{{.Vars}} sh '{{.Path}}' {{user `required_modules`}}",
       "environment_vars": [
-        "TEMPLATE={{user `template_name`}}",
+        "TEMPLATE={{user `template`}}",
         "OPERATINGSYSTEM=redhat",
         "ARCHITECTURE=x86_64"
       ],
