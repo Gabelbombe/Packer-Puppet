@@ -26,6 +26,7 @@ EOF
 case ${OPERATINGSYSTEM} in
   debian)
     RELEASEVERMAJ=$(lsb_release -r -s | sed -e 's/\.[0-9]*$//g')
+    PE_DISTRO=debian
 
     case ${RELEASEVERMAJ} in
       6.0) RELEASEVERMAJ='6';;
@@ -34,38 +35,35 @@ case ${OPERATINGSYSTEM} in
     case ${ARCHITECTURE} in
       x86_64) ARCHITECTURE='amd64';;
     esac
-
-    PE_TAR="puppet-enterprise-${PEVER}-${OPERATINGSYSTEM}-${RELEASEVERMAJ}-${ARCHITECTURE}"
   ;;
 
   oracle)
     RELEASEVERMAJ=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release) | sed -e 's/Server//g')
-    PE_TAR="puppet-enterprise-${PEVER}-el-${RELEASEVERMAJ}-${ARCHITECTURE}"
+    PE_DISTRO=el
   ;;
 
   redhat)
     RELEASEVERMAJ=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
-    PE_TAR="puppet-enterprise-${PEVER}-el-${RELEASEVERMAJ}-${ARCHITECTURE}"
+    PE_DISTRO=el
   ;;
 
   scientific)
     RELEASEVERMAJ=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release) | sed -e 's/\.[0-9]*$//g')
-    PE_TAR="puppet-enterprise-${PEVER}-el-${RELEASEVERMAJ}-${ARCHITECTURE}"
+    PE_DISTRO=el
   ;;
 
   ubuntu)
     RELEASEVERMAJ=$(lsb_release -r -s)
+    PE_DISTRO=ubuntu
 
     case ${ARCHITECTURE} in
       x86_64) ARCHITECTURE='amd64';;
     esac
-
-    PE_TAR="puppet-enterprise-${PEVER}-${OPERATINGSYSTEM}-${RELEASEVERMAJ}-${ARCHITECTURE}"
   ;;
 esac
 
 
-PE_URL="http://pe-releases.puppetlabs.net/${PEVER}/${PE_TAR}.tar.gz"
+PE_URL="https://pm.puppetlabs.com/cgi-bin/download.cgi?ver=${PEVER}&dist=${PE_DISTRO}&arch=${ARCHITECTURE}&rel=${RELEASEVERMAJ}"
 
 tarball_path=$(mktemp)
 wget --output-document="${tarball_path}" "${PE_URL}"
