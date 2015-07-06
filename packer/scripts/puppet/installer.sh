@@ -70,7 +70,7 @@ wget --output-document="${tarball_path}" "${PE_URL}"
 
 cd /tmp ; tar -zxvf ${tarball_path} ; rm ${tarball_path} ; cd puppet-enterprise*
 
-./puppet-enterprise-installer -a /tmp/answers
+sudo ./puppet-enterprise-installer -a /tmp/answers
 
 cd /tmp ; rm -rf puppet-enterprise* answers
 
