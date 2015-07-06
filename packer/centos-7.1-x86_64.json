@@ -133,8 +133,27 @@
         "scripts/common/minimize.sh"
       ]
     }, {
+      "type": "shell",
+      "execute_command": "{{.Vars}} sh '{{.Path}}' {{user `required_modules`}}",
+      "environment_vars": [
+        "TEMPLATE={{user `template_name`}}",
+        "OPERATINGSYSTEM=redhat",
+        "ARCHITECTURE=x86_64"
+      ],
+
+      "scripts": [
+        "scripts/puppet/installer.sh"
+      ]
+    }, {
       "type": "puppet-masterless",
-      "manifest_file": "site.pp"
+      "execute_command": "{{.FacterVars}} /opt/puppet/bin/puppet apply --verbose --detailed-exitcodes --modulepath='/tmp/packer-puppet-masterless/manifests/modules' {{.ManifestFile}}",
+
+      "facter": {
+        "provisioner": "{{user `provisioner`}}"
+      },
+
+      "manifest_dir":  "../manifests",
+      "manifest_file": "../manifests/vagrant/nocm.pp"
   }],
 
   "variables": {
