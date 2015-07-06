@@ -142,9 +142,7 @@
       "type": "puppet-masterless",
       "execute_command": "{{.FacterVars}} /opt/puppet/bin/puppet apply --verbose --detailed-exitcodes --modulepath='/tmp/packer-puppet-masterless/manifests/modules' {{.ManifestFile}}",
 
-      "facter": {
-        "provisioner": "{{user `provisioner`}}"
-      },
+      "facter": {},
 
       "manifest_dir":  "../manifests",
       "manifest_file": "../manifests/vagrant/nocm.pp"
