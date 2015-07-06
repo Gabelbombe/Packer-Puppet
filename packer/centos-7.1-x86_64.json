@@ -154,7 +154,7 @@
     "template": "centos-7.1-x86_64",
     "version": "2.0.TIMESTAMP",
 
-    "required_modules": "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum",
+    "required_modules": "puppetlabs-stdlib saz-sudo",
     "puppet_nfs": "{{env `PUPPET_NFS`}}",
 
     "headless": ""
