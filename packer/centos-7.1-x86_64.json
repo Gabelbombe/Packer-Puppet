@@ -11,7 +11,7 @@
       "guest_os_type": "RedHat_64",
 
       "http_directory": "http",
-      "iso_url": "{{user `mirror`}}/7.1.1503/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso",
+      "iso_url": "{{user `mirror`}}/CentOS-7-x86_64-DVD-1503-01.iso",
       "iso_checksum": "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type": "sha256",
 
@@ -48,7 +48,7 @@
       "guest_os_type": "centos-64",
 
       "http_directory": "http",
-      "iso_url": "{{user `mirror`}}/7.1.1503/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso",
+      "iso_url": "{{user `mirror`}}/CentOS-7-x86_64-DVD-1503-01.iso",
       "iso_checksum": "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type": "sha256",
 
@@ -78,7 +78,7 @@
       "guest_os_type": "centos",
 
       "http_directory": "http",
-      "iso_url": "{{user `mirror`}}/7.1.1503/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso",
+      "iso_url": "{{user `mirror`}}/CentOS-7-x86_64-DVD-1503-01.iso",
       "iso_checksum": "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type": "sha256",
 
@@ -140,7 +140,7 @@
     "git_revision": "__unknown_git_revision__",
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "iso",
-    "mirror2": "http://mirrors.kernel.org/centos",
+    "mirror2": "http://mirrors.kernel.org/centos/7.1.1503/isos/x86_64",
     "name": "centos-7.1",
     "template": "centos-7.1-x86_64",
     "version": "2.0.TIMESTAMP"
