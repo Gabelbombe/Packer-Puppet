@@ -1,9 +1,9 @@
 {
   "builders": [{
       "type": "virtualbox-iso",
-      "vm_name": "packer-centos-7.1-x86_64",
-
+      "vm_name": "centos-7.1-x86_64-{{user `build_version`}}",
       "disk_size": 40960,
+
       "hard_drive_interface": "sata",
 
       "headless": "{{user `headless`}}",
@@ -41,7 +41,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-7.1/ks.cfg<enter><wait>"
     ]}, {
       "type": "vmware-iso",
-      "vm_name": "packer-centos-7.1-x86_64",
+      "vm_name": "centos-7.1-x86_64-{{user `build_version`}}",
       "disk_size": 40960,
 
       "headless": "{{user `headless`}}",
@@ -73,7 +73,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-7.1/ks.cfg<enter><wait>"
     ]}, {
       "type": "parallels-iso",
-      "vm_name": "packer-centos-7.1-x86_64",
+      "vm_name": "centos-7.1-x86_64-{{user `build_version`}}",
       "disk_size": 40960,
 
       "headless": "{{user `headless`}}",
@@ -135,6 +135,8 @@
   }],
 
   "variables": {
+    "build_version": "1.0.0",
+
     "name": "centos-7.1",
     "box_basename": "centos-7.1",
 
