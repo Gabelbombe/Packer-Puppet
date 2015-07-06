@@ -1,7 +1,4 @@
-#!/bin/bash
-
-if [ ! -d /etc ]; then
-  mkdir -p
+#!/bin/bash -eux
 
 mkdir -p /etc
 cp /tmp/metadata.json /etc/metadata.json

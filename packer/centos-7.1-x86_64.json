@@ -6,7 +6,8 @@
       "disk_size": 40960,
       "hard_drive_interface": "sata",
 
-      "headless": 0,
+      "headless": "{{user `headless`}}",
+
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "RedHat_64",
 
@@ -43,7 +44,8 @@
       "vm_name": "packer-centos-7.1-x86_64",
       "disk_size": 40960,
 
-      "headless": 0,
+      "headless": "{{user `headless`}}",
+
       "tools_upload_flavor": "linux",
       "guest_os_type": "centos-64",
 
@@ -74,7 +76,8 @@
       "vm_name": "packer-centos-7.1-x86_64",
       "disk_size": 40960,
 
-      "headless": 0,
+      "headless": "{{user `headless`}}",
+
       "parallels_tools_flavor": "lin",
       "guest_os_type": "centos",
 
@@ -106,17 +109,20 @@
   ],
 
   "post-processors": [{
+      "type": "vagrant",
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box",
-      "type": "vagrant"
+      "compression_level": 9
   }],
 
   "provisioners": [{
+      "type": "file",
       "destination": "/tmp/metadata.json",
-      "source": "{{user `metadata`}}",
-      "type": "file"
+      "source": "{{user `metadata`}}"
     }, {
+      "type": "shell",
       "environment_vars": [],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+
       "scripts": [
         "scripts/common/metadata.sh",
         "scripts/centos/fix-slow-dns.sh",
@@ -125,8 +131,7 @@
         "scripts/common/vmtools.sh",
         "scripts/centos/cleanup.sh",
         "scripts/common/minimize.sh"
-      ],
-      "type": "shell"
+      ]
   }],
 
   "variables": {
@@ -142,6 +147,8 @@
 
     "metadata": "floppy/dummy_metadata.json",
     "template": "centos-7.1-x86_64",
-    "version": "2.0.TIMESTAMP"
+    "version": "2.0.TIMESTAMP",
+
+    "headless": ""
   }
 }
