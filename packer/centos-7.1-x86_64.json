@@ -16,7 +16,7 @@
       "iso_checksum_type": "sha256",
 
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory": "packer-centos-7.1-x86_64-virtualbox",
+      "output_directory": "output/packer-centos-7.1-x86_64-virtualbox",
 
       "ssh_wait_timeout": "10000s",
       "ssh_password": "vagrant",
@@ -52,7 +52,7 @@
       "iso_checksum": "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type": "sha256",
 
-      "output_directory": "packer-centos-7.1-x86_64-vmware",
+      "output_directory": "output/packer-centos-7.1-x86_64-vmware",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
 
       "ssh_wait_timeout": "10000s",
@@ -83,7 +83,7 @@
       "iso_checksum_type": "sha256",
 
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory": "packer-centos-7.1-x86_64-parallels",
+      "output_directory": "output/packer-centos-7.1-x86_64-parallels",
 
       "ssh_wait_timeout": "10000s",
       "ssh_username": "vagrant",
@@ -134,14 +134,17 @@
   }],
 
   "variables": {
-    "arch": "64",
+    "name": "centos-7.1",
     "box_basename": "centos-7.1",
+
+    "arch": "64",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "git_revision": "__unknown_git_revision__",
-    "metadata": "floppy/dummy_metadata.json",
-    "mirror": "iso",
+
+    "mirror": "../iso",
     "mirror2": "http://mirrors.kernel.org/centos/7.1.1503/isos/x86_64",
-    "name": "centos-7.1",
+
+    "metadata": "floppy/dummy_metadata.json",
     "template": "centos-7.1-x86_64",
     "version": "2.0.TIMESTAMP"
   }
