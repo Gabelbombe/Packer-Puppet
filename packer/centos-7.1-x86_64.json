@@ -124,8 +124,6 @@
         "scripts/common/sshd.sh",
         "scripts/common/vagrant.sh",
         "scripts/common/vmtools.sh",
-        "scripts/centos/cleanup.sh",
-        "scripts/common/minimize.sh"
       ]
     }, {
       "type": "shell",
@@ -147,6 +145,20 @@
 
       "manifest_dir":  "../manifests",
       "manifest_file": "../manifests/vagrant/nocm.pp"
+    }, {
+      "type": "shell",
+      "execute_command": "{{.Vars}} sh '{{.Path}}' {{user `required_modules`}}",
+      "environment_vars": [
+        "TEMPLATE={{user `template_name`}}",
+        "PUPPET_NFS={{user `puppet_nfs`}}"
+      ],
+      "scripts": [
+        "scripts/puppet/cleanup.sh",
+        "scripts/packer/cleanup.sh",
+        "scripts/centos/cleanup.sh",
+        "scripts/common/minimize.sh"
+
+      ]
   }],
 
   "variables": {
