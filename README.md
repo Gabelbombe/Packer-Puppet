@@ -7,15 +7,14 @@ Brew install the following
 ```
 $ brew cask install virtualbox vagrant vagrant-manager
 $ brew tap homebrew/binary
+$ brew cask install vmware-fusion     --app-dir=/Applications
+$ brew cask install parallels-desktop --app-dir=/Applications
 $ brew install packer
 ```
 
  * [VMWare Fusion](http://www.vmware.com/go/try-fusionpro-en)
  * [Parallels Desktop](http://buy.parallels.com/329/pl/67432930-eXRF2V6vmrxj02kCvVzZ-1-1-1)
  * [Parallels Virtualization SDK](http://www.parallels.com/download/pvsdk/)
-
-
-`Note: Fusion installer via Mac is more stable than using the Fusion download above, ask me how...`
 
 
 ##### Notice
