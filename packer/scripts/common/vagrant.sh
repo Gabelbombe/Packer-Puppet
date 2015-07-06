@@ -7,6 +7,9 @@ Defaults:vagrant !requiretty
 Defaults         env_keep += "SSH_AUTH_SOCK"
 ' >> /etc/sudoers
 
+# Throws:
+# ==> vmware-iso: Provisioning with shell script: scripts/common/vagrant.sh
+#     vmware-iso: sed: -e expression #1, char 49: invalid reference \1 on `s' command's RHS
 sed -i -e 's/Defaults(.*)requiretty/# Defaults\1requiretty/g' \
        -e 's/Defaults(.*)!visible/# Defaults\1!visible/g'     /etc/sudoers
 
