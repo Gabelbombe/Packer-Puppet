@@ -53,8 +53,8 @@
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
 
       "ssh_wait_timeout": "10000s",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "root",
+      "ssh_password": "puppet",
       "ssh_port": 22,
 
       "vmx_data": {
@@ -85,8 +85,8 @@
       "output_directory": "output/centos-7.1-parallels",
 
       "ssh_wait_timeout": "10000s",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "root",
+      "ssh_password": "puppet",
       "ssh_port": 22,
 
       "prlctl": [
