@@ -163,7 +163,7 @@
     "name": "centos-7.1",
 
     "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "required_modules": "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum puppetlabs-apache",
+    "required_modules": "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum puppetlabs-apache ehime-=uppet-Composer",
     "puppet_nfs": "{{env `PUPPET_NFS`}}",
 
     "mirror": "../iso",
