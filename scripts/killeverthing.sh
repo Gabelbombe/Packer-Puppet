@@ -10,7 +10,11 @@ for pid in $(ps aux |grep -i 'virtual\|vbox' |grep -v grep |awk '{print$2}'); do
 for pid in $(ps aux |grep vmware             |grep -v grep |awk '{print$2}'); do sudo kill -9 $pid; done
 for pid in $(ps aux |grep parallel           |grep -v grep |awk '{print$2}'); do sudo kill -9 $pid; done
 
-rm -fr "/Users/jd_daniel/VirtualBox VMs/*"
+for item in $(prlctl list -a |tail -n1 |awk '{print$1}' |tr -d '{}'); do
+  echo  prlctl unregister $item
+done
+
+rm -fr /Users/jd_daniel/VirtualBox\ VMs/*
 
 
 [ -f 'killvbox.sh' ] && {
