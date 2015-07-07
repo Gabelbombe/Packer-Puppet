@@ -1,14 +1,14 @@
 {
   "builders": [{
       "type":                     "virtualbox-iso",
-      "vm_name":                  "centos-7.1-x86_64-{{user `build_version`}}",
+      "vm_name":                  "centos-7.1-x86_64-{{ user `build_version` }}",
       "disk_size":                40960,
 
       "hard_drive_interface":     "sata",
 
-      "headless":                 "{{user `headless`}}",
+      "headless":                 "{{ user `headless` }}",
 
-      "guest_additions_path":     "VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_additions_path":     "VBoxGuestAdditions_{{ .Version }}.iso",
       "guest_os_type":            "RedHat_64",
 
       "http_directory":           "http",
@@ -17,7 +17,7 @@
       "iso_checksum_type":        "sha256",
 
       "shutdown_command":         "echo 'vagrant'| sudo -S /sbin/halt -h -p",
-      "output_directory":         "output/centos-7.1-{{user `build_timestamp`}}-vbox",
+      "output_directory":         "output/centos-7.1-{{ user `build_timestamp` }}-vbox",
 
       "ssh_wait_timeout":         "10000s",
       "ssh_password":             "root",
@@ -36,21 +36,21 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-7.1/ks.cfg<enter><wait>"
     ]}, {
       "type":                     "vmware-iso",
-      "vm_name":                  "centos-7.1-x86_64-{{user `build_version`}}",
+      "vm_name":                  "centos-7.1-x86_64-{{ user `build_version` }}",
       "disk_size":                40960,
 
-      "headless":                 "{{user `headless`}}",
+      "headless":                 "{{ user `headless` }}",
 
       "tools_upload_flavor":      "linux",
       "guest_os_type":            "centos-64",
 
       "http_directory":           "http",
-      "iso_url":                  "{{user `mirror-local`}}/CentOS-7-x86_64-DVD-1503-01.iso",
+      "iso_url":                  "{{ user `mirror-local` }}/CentOS-7-x86_64-DVD-1503-01.iso",
       "iso_checksum":             "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type":        "sha256",
 
-      "output_directory":         "output/centos-7.1-{{user `build_timestamp`}}-vmware",
-      "shutdown_command":         "echo 'vagrant'|sudo -S /sbin/halt -h -p",
+      "output_directory":         "output/centos-7.1-{{ user `build_timestamp` }}-vmware",
+      "shutdown_command":         "echo 'vagrant'| sudo -S /sbin/halt -h -p",
 
       "ssh_wait_timeout":         "10000s",
       "ssh_username":             "root",
@@ -68,21 +68,21 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-7.1/ks.cfg<enter><wait>"
     ]}, {
       "type":                   "parallels-iso",
-      "vm_name":                "centos-7.1-x86_64-{{user `build_version`}}",
+      "vm_name":                "centos-7.1-x86_64-{{ user `build_version` }}",
       "disk_size":              40960,
 
-      "headless":               "{{user `headless`}}",
+      "headless":               "{{ user `headless` }}",
 
       "parallels_tools_flavor": "lin",
       "guest_os_type":          "centos",
 
       "http_directory":         "http",
-      "iso_url":                "{{user `mirror-local`}}/CentOS-7-x86_64-DVD-1503-01.iso",
+      "iso_url":                "{{ user `mirror-local` }}/CentOS-7-x86_64-DVD-1503-01.iso",
       "iso_checksum":           "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type":      "sha256",
 
-      "shutdown_command":       "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "output_directory":       "output/centos-7.1-{{user `build_timestamp`}}-parallels",
+      "shutdown_command":       "echo 'vagrant'| sudo -S /sbin/halt -h -p",
+      "output_directory":       "output/centos-7.1-{{ user `build_timestamp` }}-parallels",
 
       "ssh_wait_timeout":       "10000s",
       "ssh_username":           "root",
@@ -104,7 +104,7 @@
   ],
   "post-processors": [{
      "type":                    "vagrant",
-     "output":                  "../builds/{{.Provider}}/{{user `name`}}-{{user `build_version`}}-[{{user `build_timestamp`}}].box",
+     "output":                  "../builds/{{ .Provider }}/{{ user `name` }}-{{ user `build_version` }}-[{{ user `build_timestamp` }}].box",
      "vagrantfile_template":    "templates/puppet.template",
      "compression_level":       9
   }],
@@ -116,7 +116,7 @@
     }, {
       "type": "shell",
       "environment_vars":       [],
-      "execute_command":        "echo 'vagrant' |{{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "execute_command":        "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'",
 
       "scripts": [
         "scripts/common/metadata.sh",
@@ -124,7 +124,7 @@
       ]
     }, {
       "type": "shell",
-      "execute_command":        "{{.Vars}} sh '{{.Path}}' {{user `required_modules`}}",
+      "execute_command":        "{{ .Vars }} sh '{{ .Path }}' {{ user `required_modules` }}",
 
       "environment_vars": [
         "TEMPLATE={{user `template`}}",
@@ -137,7 +137,7 @@
       ]
     }, {
       "type":                   "puppet-masterless",
-      "execute_command":        "{{.FacterVars}} /opt/puppet/bin/puppet apply --verbose --detailed-exitcodes --modulepath='/tmp/packer-puppet-masterless/manifests/modules' {{.ManifestFile}}",
+      "execute_command":        "{{ .FacterVars }} /opt/puppet/bin/puppet apply --verbose --detailed-exitcodes --modulepath='/tmp/packer-puppet-masterless/manifests/modules' {{ .ManifestFile }}",
 
       "facter":                 {},
 
@@ -145,11 +145,11 @@
       "manifest_file":          "../manifests/vagrant/puppet.pp"
     }, {
       "type": "shell",
-      "execute_command":        "{{.Vars}} sh '{{.Path}}' {{user `required_modules`}}",
+      "execute_command":        "{{ .Vars }} sh '{{ .Path }}' {{ user `required_modules` }}",
 
       "environment_vars": [
-        "TEMPLATE={{user `template`}}",
-        "PUPPET_NFS={{user `puppet_nfs`}}"
+        "TEMPLATE={{ user `template` }}",
+        "PUPPET_NFS={{ user `puppet_nfs` }}"
       ],
 
       "scripts": [
@@ -163,9 +163,9 @@
   "variables": {
     "name":                     "centos-7.1",
 
-    "build_timestamp":          "{{isotime \"20060102150405\"}}",
+    "build_timestamp":          "{{ isotime \"20060102150405\" }}",
     "required_modules":         "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum puppetlabs-apache ehime-composer",
-    "puppet_nfs":               "{{env `PUPPET_NFS`}}",
+    "puppet_nfs":               "{{ env `PUPPET_NFS` }}",
 
     "mirror-local":             "../iso",
     "mirror-remote":            "http://mirrors.kernel.org/centos/7.1.1503/isos/x86_64",
