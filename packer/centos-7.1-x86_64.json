@@ -20,13 +20,13 @@
       "output_directory": "output/centos-7.1-vbox",
 
       "ssh_wait_timeout": "10000s",
-      "ssh_password": "vagrant",
-      "ssh_username": "vagrant",
+      "ssh_password": "root",
+      "ssh_username": "puppet",
       "ssh_port": 22,
 
       "vboxmanage": [
-        [ "modifyvm", "{{.Name}}", "--memory",    480 ],
-        [ "modifyvm", "{{.Name}}", "--cpus",      2   ]
+        [ "modifyvm", "{{.Name}}", "--memory",    4096 ],
+        [ "modifyvm", "{{.Name}}", "--cpus",      2    ]
       ],
 
       "virtualbox_version_file": ".vbox_version",
@@ -58,8 +58,8 @@
       "ssh_port": 22,
 
       "vmx_data": {
+        "memsize":                4096,
         "cpuid.coresPerSocket":   2,
-        "memsize":                480,
         "numvcpus":               2
       },
 
@@ -91,7 +91,7 @@
 
       "prlctl": [
         [ "set", "{{.Name}}", "--size",      51200 ],
-        [ "set", "{{.Name}}", "--memsize",   480   ],
+        [ "set", "{{.Name}}", "--memsize",   4096  ],
         [ "set", "{{.Name}}", "--cpus",      2     ]
       ],
 
@@ -105,7 +105,7 @@
 
   "post-processors": [{
       "type": "vagrant",
-      "output": "builds/{{user `box_basename`}}.{{.Provider}}.box",
+      "output": "builds/{{user `name`}}.{{.Provider}}.box",
       "compression_level": 9
   }],
 
@@ -120,10 +120,7 @@
 
       "scripts": [
         "scripts/common/metadata.sh",
-        "scripts/centos/fix-slow-dns.sh",
-        "scripts/common/sshd.sh",
-        "scripts/common/vagrant.sh",
-        "scripts/common/vmtools.sh"
+        "scripts/centos/fix-slow-dns.sh"
       ]
     }, {
       "type": "shell",
@@ -163,25 +160,19 @@
   }],
 
   "variables": {
-    "build_version": "1.0.0",
-
     "name": "centos-7.1",
-    "box_basename": "centos-7.1",
 
-    "arch": "64",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
-    "git_revision": "__unknown_git_revision__",
+    "required_modules": "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum",
+    "puppet_nfs": "{{env `PUPPET_NFS`}}",
 
     "mirror": "../iso",
     "mirror2": "http://mirrors.kernel.org/centos/7.1.1503/isos/x86_64",
 
     "metadata": "floppy/dummy_metadata.json",
     "template": "centos-7.1-x86_64",
-    "version": "2.0.TIMESTAMP",
 
-    "required_modules": "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum",
-    "puppet_nfs": "{{env `PUPPET_NFS`}}",
-
+    "build_version": "1.0.0",
     "headless": ""
   }
 }
