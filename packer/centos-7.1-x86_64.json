@@ -20,8 +20,8 @@
       "output_directory":         "output/centos-7.1-{{ user `build_timestamp` }}-vbox",
 
       "ssh_wait_timeout":         "10000s",
-      "ssh_password":             "root",
-      "ssh_username":             "puppet",
+      "ssh_password":             "vagrant",
+      "ssh_username":             "vagrant",
       "ssh_port":                 22,
 
       "vboxmanage": [
@@ -120,7 +120,7 @@
 
       "scripts": [
         "scripts/common/metadata.sh",
-        "scripts/centos/fix-slow-dns.sh"
+        "scripts/centos/fix-slow-dns.sh",
       ]
     }, {
       "type": "shell",
@@ -142,7 +142,7 @@
       "facter":                 {},
 
       "manifest_dir":           "../manifests",
-      "manifest_file":          "../manifests/vagrant/puppet.pp"
+      "manifest_file":          "../manifests/vagrant/nocm.pp"
     }, {
       "type": "shell",
       "execute_command":        "{{ .Vars }} sh '{{ .Path }}' {{ user `required_modules` }}",
@@ -164,7 +164,7 @@
     "name":                     "centos-7.1",
 
     "build_timestamp":          "{{ isotime \"20060102150405\" }}",
-    "required_modules":         "puppetlabs-stdlib saz-sudo stahnma-puppetlabs_yum puppetlabs-apache ehime-composer",
+    "required_modules":         "puppetlabs-stdlib saz-sudo puppetlabs-apache ehime-composer",
     "puppet_nfs":               "{{ env `PUPPET_NFS` }}",
 
     "mirror-local":             "../iso",
