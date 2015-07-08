@@ -16,12 +16,12 @@
       "iso_checksum":             "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type":        "sha256",
 
-      "shutdown_command":         "echo 'vagrant'| sudo -S /sbin/halt -h -p",
+      "shutdown_command":         "/sbin/halt -h -p",
       "output_directory":         "output/centos-7.1-{{ user `build_timestamp` }}-vbox",
 
-      "ssh_wait_timeout":         "10000s",
-      "ssh_password":             "vagrant",
-      "ssh_username":             "vagrant",
+      "ssh_wait_timeout":         "5m",
+      "ssh_password":             "root",
+      "ssh_username":             "puppet",
       "ssh_port":                 22,
 
       "vboxmanage": [
@@ -50,9 +50,9 @@
       "iso_checksum_type":        "sha256",
 
       "output_directory":         "output/centos-7.1-{{ user `build_timestamp` }}-vmware",
-      "shutdown_command":         "echo 'vagrant'| sudo -S /sbin/halt -h -p",
+      "shutdown_command":         "/sbin/halt -h -p",
 
-      "ssh_wait_timeout":         "10000s",
+      "ssh_wait_timeout":         "5m",
       "ssh_username":             "root",
       "ssh_password":             "puppet",
       "ssh_port":                 22,
@@ -81,10 +81,10 @@
       "iso_checksum":           "85bcf62462fb678adc0cec159bf8b39ab5515404bc3828c432f743a1b0b30157",
       "iso_checksum_type":      "sha256",
 
-      "shutdown_command":       "echo 'vagrant'| sudo -S /sbin/halt -h -p",
+      "shutdown_command":       "/sbin/halt -h -p",
       "output_directory":       "output/centos-7.1-{{ user `build_timestamp` }}-parallels",
 
-      "ssh_wait_timeout":       "10000s",
+      "ssh_wait_timeout":       "5m",
       "ssh_username":           "root",
       "ssh_password":           "puppet",
       "ssh_port":               22,
@@ -116,15 +116,15 @@
     }, {
       "type": "shell",
       "environment_vars":       [],
-      "execute_command":        "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'",
+      "execute_command":        "{{ .Vars }} bash '{{ .Path }}'",
 
       "scripts": [
         "scripts/common/metadata.sh",
-        "scripts/centos/fix-slow-dns.sh",
+        "scripts/centos/fix-slow-dns.sh"
       ]
     }, {
       "type": "shell",
-      "execute_command":        "{{ .Vars }} sh '{{ .Path }}' {{ user `required_modules` }}",
+      "execute_command":        "{{ .Vars }} bash '{{ .Path }}' {{ user `required_modules` }}",
 
       "environment_vars": [
         "TEMPLATE={{user `template`}}",
@@ -145,7 +145,7 @@
       "manifest_file":          "../manifests/vagrant/nocm.pp"
     }, {
       "type": "shell",
-      "execute_command":        "{{ .Vars }} sh '{{ .Path }}' {{ user `required_modules` }}",
+      "execute_command":        "{{ .Vars }} bash '{{ .Path }}' {{ user `required_modules` }}",
 
       "environment_vars": [
         "TEMPLATE={{ user `template` }}",
